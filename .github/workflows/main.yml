@@ -1,14 +1,13 @@
-  name: CI DevOps 2024
+name: CI devops 2024
 on:
   push:
-    branches: 
+    branches:
       - main
-      - dev
-      - feature
+      - develop
   pull_request:
 
 jobs:
-  test-backend: 
+  test-backend:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2.5.0
@@ -16,8 +15,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Build and test with Maven
         run: mvn clean verify
@@ -28,26 +27,31 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+      # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v2.5.0
+
       # Login to Docker Hub
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-        
-      - name: Build and push backend
+
+      # Build and push backend image
+      - name: Build image and push backend
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Devsops-backend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
-      - name: Build and push database
+      # Build and push database image
+      - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Devsops-database:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/database:latest
 
-      - name: Build and push httpd
+      # Build and push http-server image
+      - name: Build image and push http-server
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Devsops-http-server:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/http-server:latest
