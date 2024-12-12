@@ -36,13 +36,13 @@ jobs:
         with:
           context: ./simple-api
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
-
+      
       - name: Build and push database
         uses: docker/build-push-action@v3
         with:
           context: ./database
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-database:latest
-
+      
       - name: Build and push httpd
         uses: docker/build-push-action@v3
         with:
