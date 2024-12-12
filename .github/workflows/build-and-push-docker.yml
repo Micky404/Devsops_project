@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-backend:latest
           push: true
 
       # Build and push the database Docker image
