@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      # Checkout the GitHub codeeee
+      # Checkout the GitHub code
       - name: Checkout code
         uses: actions/checkout@v2.5.0
 
