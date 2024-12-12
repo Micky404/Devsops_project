@@ -22,14 +22,6 @@ jobs:
       - name: Build and test with Maven
         run: mvn clean verify
         working-directory: simple-api
-  build-and-push-docker-image:
-      if: ${{ github.event.workflow_run.conclusion == 'success' }}
-      runs-on: ubuntu-22.04
-  
-      steps:
-        # Checkout the GitHub code
-        - name: Checkout code
-          uses: actions/checkout@v2.5.0
         
         # Login to DockerHub
         - name: Login to DockerHub
