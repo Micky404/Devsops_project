@@ -3,7 +3,7 @@ name: Build and Push Docker Images
 on:
   workflow_run:
     workflows:
-      - Test Backend CI
+      - CI DevOps 2024
     types:
       - completed
 
