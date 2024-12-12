@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          tags: "${{ secrets.DOCKERHUB_USERNAME }}/simple-api:latest"
+          tags: "${{ secrets.DOCKER_USERNAME }}/simple-api:latest"
           push: true
 
       # Build and push the database Docker image
@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags: "${{ secrets.DOCKERHUB_USERNAME }}/database:latest"
+          tags: "${{ secrets.DOCKER_USERNAME }}/database:latest"
           push: true
 
       # Build and push the HTTP server Docker image
@@ -41,5 +41,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags: "${{ secrets.DOCKERHUB_USERNAME }}/httpd:latest"
+          tags: "${{ secrets.DOCKER_USERNAME }}/httpd:latest"
           push: true
