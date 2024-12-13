@@ -11,7 +11,7 @@ jobs:
   test-backend:
     runs-on: ubuntu-22.04
     steps:
-      # Checkout the GitHub code
+      # Checkout the GitHub codee
       - name: Checkout code
         uses: actions/checkout@v2.5.0
 
