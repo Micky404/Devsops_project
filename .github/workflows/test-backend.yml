@@ -23,12 +23,13 @@ jobs:
           java-version: 17
 
         # Build and test with Maven
-      - name: Build and test with Maven
-        run: mvn -B verify sonar:sonar \
+      - name: Debug Maven
+        run: mvn -X -e verify sonar:sonar \
               -Dsonar.projectKey=Micky404_Devops_project \
               -Dsonar.organization=micky404 \
               -Dsonar.host.url=https://sonarcloud.io \
               -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: simple-api
+
 
 
